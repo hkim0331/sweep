@@ -4,18 +4,20 @@ ping に答えるホストを探す。
 
 ## USAGE
 
-* sweep [--debug] [--help]
+* sweep [--help] [--version] [--debug]
 
     自分のサブネットをスィープ。
-
-    --debug でデバッグ用メッセージを表示。
+    サブネットとは自 IP を x.y.z.w とした時の x.y.z である（手抜き）。
 
     --help でヘルプメッセージを表示。
+
+    --version でバージョン番号を表示。
+
+    --debug でデバッグ用メッセージを表示。
 
 * sweep --from ip1 --to ip2
 
     ip1 と ip2 の間をスィープ。
-
     IP アドレスの各オクテットは桁数が一致していないといけない。
 
 * sweep ip1 - ip2
