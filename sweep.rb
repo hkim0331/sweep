@@ -12,7 +12,7 @@ $debug = !!ENV['DEBUG']
 
 def usage(s)
   print <<EOU
-error: #{s}
+#{s}
 
 usage:
  #{$0} --from from --to to
@@ -62,6 +62,8 @@ if __FILE__ == $0
   first = true
   while (arg = ARGV.shift)
     case(arg)
+    when /\A(-h)|(--help)\Z/
+      usage("help")
     when /--debug/
       # --debug は ruby インタプリタへの指示になっているのか？
       $debug = true
