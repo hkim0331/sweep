@@ -1,19 +1,16 @@
 #!/usr/bin/env ruby
 # coding: utf-8
 #
-# programmed by hkimura, 2016-04-25.
-# developed in ~/btsync/utils/sweep.rb
-#
-# 2016-04-25: IP の各オクテットの桁数が異なる場合、usage()を出して終わる。
-#
+# programmed by hkimura, 2016-04-25, 2016-05-01.
+# developed in ~/btsync/utils/sweep/
+
 require 'socket'
 
 $debug = !!ENV['DEBUG']
 
 def usage(s)
+  puts #{s}
   print <<EOU
-#{s}
-
 usage:
  #{$0} --from from --to to
  #{$0} from - to
@@ -26,7 +23,6 @@ from 〜 to の IP アドレス内に ping に反応するホストがあれば�
 
 example:
  $ #{$0} 10.0.34.01-10.0.34.99
-
 EOU
   exit(1)
 end
@@ -36,7 +32,6 @@ def get_my_addr()
     .select{|x| x.name=="en0" and x.addr.ipv4?}.first.addr.ip_address
 end
 
-# FIXME: -c と -W をデフォルトありの引数として渡す
 def ping?(ip, count)
   IO.popen("ping -c #{count} #{ip} 2>/dev/null") do |pipe|
     pipe.readlines.each do |line|

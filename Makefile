@@ -1,3 +1,8 @@
+DEST=${HOME}/bin
+
+install:
+	install -m 0755 sweep.rb ${DEST}/sweep
+
 local:
 	./sweep.rb 192.168.0.1-192.168.0.9
 
