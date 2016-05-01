@@ -20,7 +20,9 @@ ping に答えるホストを探す。
 
 ## REQUIRE
 
-    ruby 2.3.0 で動作確認しているが、別のバージョンでも動くと予想される。
+ruby >= 2.1.0
+
+Socket.getifaddrs が入ったのが 2.1.0 なので。
 
 ## FIXME
 
@@ -32,9 +34,9 @@ ping に答えるホストを探す。
 
 ## FIXED
 
-### author
+## author
 
-    Hiroshi Kimura <hiroshi.kimura.0331@gmail.com>
+Hiroshi Kimura <hiroshi.kimura.0331@gmail.com>
 
 ---
-2016-05-01.
+2016-05-01
