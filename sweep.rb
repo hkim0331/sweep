@@ -109,7 +109,7 @@ if __FILE__ == $0
   threads.each {|thr| thr.join}
 
   # これだとスイープ終わってからしか表示しない。
- # 上の、ループ中の puts の方が好み。
+  # 上の、ループ中の puts の方が好み。
   # ret.keys.sort.each do |addr|
   #   puts addr if ret[addr]
   # end
