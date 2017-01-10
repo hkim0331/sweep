@@ -27,10 +27,15 @@ EOU
   exit(1)
 end
 
+# FIXME: en0 以外のインタフェースだとどうする？
 def get_my_addr()
   Socket.getifaddrs
     .select{|x| x.name=="en0" and x.addr.ipv4?}.first.addr.ip_address
 end
+
+# FIXME: ruby has ping function.
+# gem install net-ping
+# require 'net/ping'
 
 def ping?(ip, count)
   IO.popen("ping -c #{count} #{ip} 2>/dev/null") do |pipe|
@@ -99,13 +104,16 @@ if __FILE__ == $0
   (from..to).each do |ip|
     threads << Thread.new(ip) do |addr|
       ret[addr] = ping?(addr, count)
+      puts addr if ret[addr]
     end
   end
   threads.each {|thr| thr.join}
 
-  ret.keys.sort.each do |addr|
-    puts addr if ret[addr]
-  end
+  # これだとスイープ終わってからしか表示しない。
+  # 上の、ループ中の puts の方が好み。
+  # ret.keys.sort.each do |addr|
+  #   puts addr if ret[addr]
+  # end
 
   #別サブネットは arp には乗らん。
   #system("arp -a | grep -v incomplete")

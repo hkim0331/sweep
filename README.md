@@ -32,6 +32,8 @@ Socket.getifaddrs が入ったのが 2.1.0 なので。
 
 ## FIXME
 
+* スレッドが並列に動作してないようだが？
+
 ## author
 
 Hiroshi Kimura <hiroshi.kimura.0331@gmail.com>
