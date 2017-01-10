@@ -50,7 +50,7 @@ end
 if __FILE__ == $0
 
   $debug = false
-  intf = "eth0"
+  intf = "en0" # default macos
   count = 3
   timeout = 1
   mynet = nil
